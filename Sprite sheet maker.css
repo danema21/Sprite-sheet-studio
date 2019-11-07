@@ -1,0 +1,235 @@
+body{
+	background-color: #4C6E53;
+	overflow: hidden;
+	user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+/*Menu header block/////////////////////////////////////////////*/
+#menu{
+	background-color: #999;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	z-index: -1;
+}
+
+.menu-btn{
+	background-color: #999;
+	margin: 5px;
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+.menu-btn:hover{
+	background-color: gray;
+	color: white;
+}
+
+#version{
+	color: white;
+	margin: 0 auto;
+	margin-right: 20px;
+}
+/*//////////////////////////////////////////////////////////////*/
+
+/*Framesbar block///////////////////////////////////////////////*/
+#frames-bar{
+	background-color : lightgray;
+	display: flex;
+	border: 2px solid lightgray;
+}
+
+#frames-container{
+	background-color: white;
+	display: flex;
+	width: 90%;
+	margin-left: 10px;
+	overflow-x: auto; 
+}
+/*//////////////////////////////////////////////////////////////*/
+
+/*Toolbar block/////////////////////////////////////////////////*/
+#tool-bar{
+	background-color: rgba(120, 120, 160, 0.7);
+	border: 2px solid black;
+	display: flex;
+	flex-wrap: wrap;
+	width: 185px;
+	top: 80px;
+	left: 25px;
+	position: absolute;
+	z-index: -2;
+	box-shadow: 0px 0px 10px black;
+}
+
+.tool-bar-header{
+	background-color: lightgray;
+	text-align: center;
+	font-weight: bold;
+	width: 100%;
+}
+
+.tool-btn{
+	height: 40px;
+	width: 40px;
+	margin: 5px;
+	color: black;
+}
+
+.color-btn{
+	height: 30px;
+	width: 30px;
+	margin: 3px;
+}
+
+#grid-handlers-container{
+	display: flex;
+	margin: 15px 15px 15px 20px;
+	width: 100%;
+	height: 40px;
+}
+
+.grid-handler{
+	font-size: 10px;
+	font-weight: bold;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 50%;
+}
+
+.grid-handler-btn{
+	background-color: lightgray;
+	color: green;
+}
+
+#display-row-quantity{
+	background-color: lightgray;
+	width: 92%;
+	text-align: center;
+}
+
+#display-column-quantity{
+	background-color: lightgray;
+	width: 85%;
+	text-align: center;
+}
+
+#grid-handlers-disabling-screen{
+	position: absolute;
+	width: 181px;
+	height: 70px;
+	top: 430px;
+	left: 0px;
+	background-color: rgba(0, 0, 0, 0.5);
+	visibility: hidden;
+}
+
+#animation-controls-container{
+	background-color: rgb(120, 120, 160);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////*/
+
+/*Canvas block//////////////////////////////////////////////////*/
+#canvas{
+	position: absolute;
+	z-index: -4;
+	box-shadow: 0px 0px 10px black;
+}
+
+#grid{
+	position: absolute;
+	z-index: -3;
+}
+/*//////////////////////////////////////////////////////////////*/
+
+/*Splashscreen block///////////////////////////////////////////*/
+#new-splashScreen{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+.splashScreen-box{
+	background-color: lightgray;
+	width: 400px; 
+	height: 200px;
+	margin: 0 auto;
+	margin-top: 150px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 40px black;
+}
+
+.splashScreen-header{
+	background-color: black;
+	color: white;
+	text-align: center;
+	border-radius: 5px 5px 0 0;
+	margin-bottom: 5px;
+}
+
+#splashScreen-scale-options{
+	background-color: #BBBBBB;
+	width: 100px;
+	margin: 10px;
+	margin-top: 20px;
+	margin-left: 40px;
+	border-radius: 3px;
+}
+
+#open-splashScreen{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+#choose-file-img{
+	background-color: #BBBBBB;
+	padding: 15px;
+	display: inline-block;
+	margin: 10px 20px 0px 20px;
+}
+
+#animation-splashScreen{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+#splashScreen-animation-box{
+	background-color: lightgray;
+	width: 440px;
+	margin: 0 auto;
+	margin-top: 150px;
+	padding-bottom: 3px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 40px black;
+}
+
+#help-splashScreen{
+	background-color: rgba(0, 0, 0, 0.95);
+	position: absolute;
+	width: 90%;
+	height: 80%;
+	color: white;
+	visibility: hidden;
+	overflow-y: auto;
+	margin-left: 5%;
+	margin-top: 2%;
+	border-radius: 5px;
+	padding: 5px;
+}
