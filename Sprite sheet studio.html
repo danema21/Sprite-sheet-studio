@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Sprite sheet studio</title>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.6/css/bootstrap-colorpicker.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.6/js/bootstrap-colorpicker.js"></script>
+	
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+	
+	<link rel="styleSheet" href="Sprite sheet studio.css"/>
+</head>
+<body>
+<!--Menu bar-->
+	<div id="menu">
+		<button id="menu-new" class="menu-btn">New <i class="fa fa-folder"></i></button>
+		<button  id="menu-open" class="menu-btn">Open <i class="fa fa-folder-open"></i></button>
+		<button id="menu-save"class="menu-btn">Save <i class="fa fa-floppy-o"></i></button>
+		<button id="menu-animation-preview" class="menu-btn">Animation preview <i class="fa fa-play-circle"></i></button>
+		<button id="menu-help"class="menu-btn">Help <i class="fa fa-info-circle"></i></button>
+		<div id="version">Sprite sheet studio 1.1 by damianema21</div>
+	</div>
+<!--Frames bar-->
+	<div id="frames-bar">
+		<span>Frame:</span>
+		<span id="frames-container"></span>
+	</div>
+<!--Tool size-->
+	<div id="tool-size-bar">
+		<span>Tool Size</span>
+		<input id="tool-size" type="number" min="1" max="40" value="10"></input>
+		<button id="undo" style="color: gray"><i class="fa fa-undo"></i> Undo</button>
+		<button id="redo" style="color: gray">Redo <i class="fa fa-repeat"></i></button>
+	</div>
+
+<!--Side toolbar-->
+	<div id="tool-bar">
+		
+	<!--Paint tools section-->
+		<div class="tool-bar-header"><i class="fa fa-wrench"></i> Tools</div>
+		<button id="pencilButton" class="tool-btn"><i class="fa fa-pencil"></i></button>
+		<button id="brushButton" class="tool-btn"><i class="fa fa-paint-brush"></i></button>
+		<button id="eraserButton"class="tool-btn"><i class="fa fa-eraser"></i></button>
+		<button id="fillButton" class="tool-btn"><i class="fa fa-flask"></i></button>
+		<button id="eyedropperButton" class="tool-btn"><i class="fa fa-eyedropper"></i></button>
+		<button id="dragButton" class="tool-btn"><i class="fa fa-hand-paper-o"></i></button>
+		<button id="copyButton" class="tool-btn"><i class="fa fa-copy"></i></button>
+		<button id="stampButton" class="tool-btn"><i class="fa fa-clone"></i></button>
+		<button id="lineButton" class="tool-btn"><i style="font-size: 20px">/</i></button>
+		<button id="squareButton" class="tool-btn"><i class="fa fa-square-o"></i></button>
+		<button id="circleButton" class="tool-btn"><i class="fa fa-circle-o"></i></button>
+		<button id="triangleButton" class="tool-btn"><i class="fa fa-caret-up" style="font-size: 25px"></i></button>
+		
+	<!--Default colors palette section-->
+		<div class="tool-bar-header"><i class="fa fa-paint-brush"></i> Color palette</div>
+		<button id="black" class="color-btn" style="background-color: black"></button>
+		<button id="gray" class="color-btn" style="background-color: gray"></button>
+		<button id="lightgray" class="color-btn" style="background-color: lightgray"></button>
+		<button id="white" class="color-btn" style="background-color: white"></button>
+		<button id="red" class="color-btn" style="background-color: red"></button>
+		<button id="darkred" class="color-btn" style="background-color: brown"></button>
+		<button id="brown" class="color-btn" style="background-color: #A36048"></button>
+		<button id="pink" class="color-btn" style="background-color: pink"></button>
+		<button id="orange" class="color-btn" style="background-color: orange"></button>
+		<button id="yellow" class="color-btn" style="background-color: yellow"></button>
+		<button id="lightorange" class="color-btn" style="background-color: #FFCC73"></button>
+		<button id="lightyellow" class="color-btn" style="background-color: #FFFD9E"></button>
+		<button id="green" class="color-btn" style="background-color: green"></button>
+		<button id="lightgreen" class="color-btn" style="background-color: lightgreen"></button>
+		<button id="blue" class="color-btn" style="background-color: blue"></button>
+		<button id="dodgerblue" class="color-btn" style="background-color: dodgerblue"></button>
+		<button id="skyblue" class="color-btn" style="background-color: skyblue"></button>
+		<button id="lightblue" class="color-btn" style="background-color: #9EA3FF"></button>
+		<button id="purple"class="color-btn" style="background-color: purple"></button>
+		<button id="lightpurple" class="color-btn" style="background-color: #995599"></button>
+		<button id="transparent" class="color-btn" style="background-color: white; background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px;"></button>
+		
+	<!--Custom color section-->
+		<div class="tool-bar-header"><i class="fa fa-tint"></i> Custom color</div>
+		<div id="colpkr" class="input-group colorpicker-component" style="margin: 10px">
+			<input id="current-color-string" type="text" value="rgba(1,1,1,255)" class="form-control"/>
+			<span id="current-custom-color" class="input-group-addon"><i></i></span>
+		</div>
+		
+	<!--Grid section-->
+		<div class="tool-bar-header"><i class="fa fa-th"></i> Grid <button id="grid-switch" style="font-size: 10px; color: dodgerblue; margin: 2px">Grid on</button></div>
+		<div id="grid-handlers-container">
+			<div id="columns-grid-handler">
+				<button id="remove-column" class="grid-handler-btn">-</button>
+				<span>Columns</span>
+				<button id="add-column" class="grid-handler-btn">+</button>
+				<input type="text" value="16" id="display-column-quantity"/>
+			</div>
+			<div id="rows-grid-handler">
+				<button id="remove-row" class="grid-handler-btn">-</button>
+				<span>Rows</span>
+				<button id="add-row" class="grid-handler-btn">+</button>
+				<input type="text" value="16" id="display-row-quantity"/>
+			</div>
+			<div id="grid-handlers-disabling-screen"></div>
+		</div>
+		
+		<!--Animation section-->
+		<div class="tool-bar-header"><i class="fa fa-film"></i> Animation</div>
+		<div id="animation-controls-container">
+			<div>
+				<span>Frames:</span>
+				<button id="remove-animation-frame">-</button>
+				<input id="display-animation-frames" type="text" value="1" style="width: 42%; background-color: lightgray"/>
+				<button id="add-animation-frame">+</button>
+			</div>
+			<div>
+				<span>Rows:</span>
+				<button id="remove-animation-row">-</button>
+				<input id="display-animation-rows" type="text" value="1" style="width: 50%; background-color: lightgray"/>
+				<button id="add-animation-row">+</button>
+			</div>
+		</div>
+	</div>	
+	
+	
+<!--Canvas-->
+	<canvas id="canvas" width="320" height="320" ></canvas>
+	
+	<canvas id="grid" width="320" height="320" ></canvas>
+	
+	<canvas id="copyCanvas" width="160" height="160" style="border: 2px dotted black; position: absolute; visibility: hidden; right: 0px; opacity: 0.4"></canvas>
+	<div class="auxiliar-icon" id="copy-aux"><i class="fa fa-copy"></i></div>
+	
+<!--Menu options splashScreen-->
+	<div id="new-splashScreen">
+		<div class="splashScreen-box">
+			<div class="splashScreen-header">
+				start new project
+			</div>
+			<div id="splashScreen-scale-options">
+				<p>Choose scale:</p>
+				<input id="16x16" type="radio" name="scale" checked>16x16</input></br>
+				<input id="32x32" type="radio" name="scale">32x32</input></br>
+				<input id="64x64" type="radio" name="scale">64x64</input>
+			</div>
+			<div style="margin-left: 250px">
+				<button id="new-splashScreen-cancel">
+					cancel
+				</button>
+				<button id="new-splashScreen-ok">
+					accept
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="open-splashScreen">
+		<div class="splashScreen-box">
+			<div class="splashScreen-header">
+				open image from device
+			</div>
+			<div style="margin-left: 15px">Choose frame width and height:</div>
+			<label style="margin-left: 15px" for="open-frame-width">width:</label><input type="number" min="1" value="16" name="open-frame-width" id="open-frame-width"/></br>
+			<label style="margin-left: 15px" for="open-frame-height">height:</label><input type="number" min="1" value="16" name="open-frame-height" id="open-frame-height"/>
+			<div id="choose-file-img">
+				<input id="imageLoader" name="imageLoader" type="file" accept="image/*" />
+			</div>
+			<div style="margin-top: 5px; margin-left: 300px">
+				<button id="open-splashScreen-cancel">
+					cancel
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="animation-splashScreen">
+		<div id="splashScreen-animation-box">
+			<div class="splashScreen-header">
+				Animation preview
+			</div>
+			<label for="number-of-animation-frames">Animation Frames:</label><input type="number" min="1" name="number-of-animation-frames" id="number-of-animation-frames" style="width: 100px" value="1"/>
+			<label for="animation-row">Animation Row:</label><input type="number" min="1" name="animation-row" id="animation-row" style="width: 100px" value="1"/>
+			<label for="animation-speed">Animation speed:</label><input type="number" min="1" max="60" name="animation-speed" id="animation-speed" style="width: 100px" value="1"/>
+			<canvas id="animation-preview-canvas" width="160" height="160" style="display: block; margin: 0 auto; margin-top: 10px; border: 1px solid black"></canvas>
+			<button id="animation-preview-cancel" style="display: block; margin: 0 auto; margin-top: 10px">close</button>
+		</div>
+	</div>
+	
+	<div id="help-splashScreen">
+	
+		<h1>Welcome to Sprite sheet maker help section</h1>
+		
+		<h3>Index:</h3>
+		<i>- Version history</i></br>
+		<i>- Toolbar.</i></br>
+		<i>- Current frame bar.</i></br>
+		<i>- Menu options.</i></br>
+		
+		<h3>Version history:</h3>
+		<p>1.1:</p>
+		<i>-fix bug when the user opens a project and then tries to open the same project again but It
+	    doesn't because of an error with the file reader.</i></br>
+		<i>-fix bug when the user is drawing and releases the mouse out of the canvas, and then when the
+	    mouse entered the canvas it keeped drawing even if the mouse wasn't pressed.</i></br>
+		<i>-add the new transparent color to make transparent backgrounds.</i></br>
+		<i>-add option to increase and decrease tool size.</i></br>
+		<i>-add the undo and redo buttons.</i></br>
+		<i>-add new tool buttons: circle, line, square, triangle(this tools doesn't work yet, in the next update will become functional).</i></br>
+		<i>-add version history to the help section.<i></br>
+		<i>-changed the way the eraser works, now doesn't leave that annoying white border trace like before and will erase 
+		color white too.</i></br>
+		<i>-changed the dimensions of the toolbar because of the new added buttons.</i></br>
+		<i>-changed the theme of the app to a more colorful one<i></br>
+		<i>-updated the help section to the new features.</i></br>
+		<i>-added support for mobile devices(currently testing).</i></br>
+		
+		<h3>Toolbar:</h3>
+		<p>In the toolbar you can use various tools for drawing in the canvas(and at the top you can choose
+		the size of the tool as well as undo and redo various actions), like a pencil(to draw pixels based on 
+		the scale of the grid), a brush(to just draw freely), an eraser, a color fill tool, an eyedropper(to copy
+		a color previusly used on the canvas), a drag tool(to reposition the canvas in the work space),
+		a copy tool(that copies an entire frame and on the next click it pastes it in the frame of your choice),
+		and a stamp tool(it works the same as the copy tool but it is pasted with transparency in the grid not the canvas; it
+		works great as a guide to your next frame draw), also when you copy something with the copy tool
+		or the stamp tool, you can cancel the action by using the right click. Then you have the usual 
+		default colors palette, a custom color picker and the new transparent color that lets you make transparent
+		backgrounds.</p>
+		
+		<p>In the next section is the grid controllers, here you can toggle the grid on and off and also
+		specify how many columns and rows your frame will have(is important that you know, once you add a new frame
+		the grid controllers section will be inhabilitated).</p>
+		
+		<p>Lastly the animation controllers section, here you can add and remove the animation frames and
+		animation rows.</p>
+		
+		<h3>Current frame bar:</h3>
+		<p>This bar is useful when you want to go to a specific frame in your an animation that has a lot
+		of frames, so you can click for example the number 42 of the frame bar and it will take you to that
+		frame in the canvas.</p>
+		
+		<h3>Menu options:</h3>
+		<p>When clicking on New you will be asked to choose a scale for your new project, this means that you
+		will specify the scale of the grid as well as the pencil tool size.</p>
+		
+		<p>When you save your project it is best to name it like: example8x7-16, that means that the project consist
+		of 8 grid columns and 7 grid rows, with a scale of 16(the columns and rows are just a way for you to remember
+		the width and height of the animation frame, but the scale number is nessesary or the grid wont work very well).</p>
+		
+		<p>Remember the name we gave our saved project?, well now we will put it to use. When you click on Open you will be asked for
+		a width and a height, if we want to open the project example8x7-16 then we fill the field width = 8 and height = 7, and then
+		we select the file example8x7-16.</p>
+		
+		<p>And the last one is Animation preview, when you click on this you will see an Animation frames field(where you 
+		will enter the number of frames you want in the animation), an Animation row field(where you can choose wich row of
+		frames will be played), and an Animation speed field(the greater the number the faster).</p>
+		
+		<button id="help-splashScreen-cancel" style="color: black; display: block; margin: 0 auto;">close</button>
+		
+	</div>
+<!--mobile section-->
+	<div id="mobile-animation-controllers">
+		<button style="width: 50%; color: white; background: lightgray">Remove Frame</button>
+		<button style="width: 50%; color: white; background: lightgray">Add Frame</button>
+		<div id="mobile-animation-rows">
+			<button style="width: 100%; color: white; background: lightgray">Add Row</button>
+			<button style="width: 100%; color: white; background: lightgray">Remove Row</button>
+		</div>
+	</div>
+	
+	<div id="mobile-frames-bar">
+		<button class="frame-marker">1</button>
+	</div>
+	
+	<div id="mobile-undo-redo">
+		<button id="mobile-undo"><i class="fa fa-undo"></i> Undo</button>
+		<button id="mobile-redo">Redo <i class="fa fa-repeat"></i></button>
+	</div>
+	<canvas id="mobile-canvas" width="320" height="320"></canvas>
+	<canvas id="mobile-grid" width="320" height="320"></canvas>
+	
+	<div id="mobile-menu-container">
+		<div id="mobile-tools" class="mobile-menu-btn dropup">
+			<button class="mobile-tool-btn btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-wrench"></i></button>
+			<ul class="dropdown-menu">
+				<li>
+					<button id="mobile-pencilButton"><i class="fa fa-pencil"></i></button>
+					<button id="mobile-brushButton"><i class="fa fa-paint-brush"></i></button>
+					<button id="mobile-eraserButton"><i class="fa fa-eraser"></i></button>
+					<button id="mobile-fillButton"><i class="fa fa-flask"></i></button>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<button id="mobile-eyedropperButton"><i class="fa fa-eyedropper"></i></button>
+					<button id="mobile-dragButton"><i class="fa fa-hand-paper-o"></i></button>
+					<button id="mobile-copyButton"><i class="fa fa-copy"></i></button>
+					<button id="mobile-stampButton"><i class="fa fa-clone"></i></button>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<button id="mobile-lineButton"><i>/</i></button>
+					<button id="mobile-squareButton"><i class="fa fa-square-o"></i></button>
+					<button id="mobile-circleButton"><i class="fa fa-circle-o"></i></button>
+					<button id="mobile-triangleButton"><i class="fa fa-caret-up"></i></button>
+				</li>
+			</ul>
+		</div>
+		<div id="mobile-colors" class="mobile-menu-btn">
+			<button class="mobile-tool-btn btn btn-default"><input type="color" value="#000000" style="background: lightgray"></input></button>
+		</div>
+		<div id="mobile-tool-size-btn" class="mobile-menu-btn dropup">
+			<button class="mobile-tool-btn btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i>ToolSize</i></button>
+			<ul class="dropdown-menu">
+				<li>
+					<label for="mobile-tool-size">Choose size:</label>
+					<input type="range" min="1" max="40" id="mobile-tool-size" value="10"></input>
+				</li>
+			</ul>
+		</div>
+		<div id="mobile-canvas-controllers" class="mobile-menu-btn dropup">
+			<button class="mobile-tool-btn btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-th"></i></button>
+			<ul class="dropdown-menu">
+				<li>
+					<button id="mobile-grid-switch" class="btn btn-primary">Grid on</button>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<label for="mobile-grid-cols">Columns:</label>
+					<input type="number" min="1" id="mobile-grid-cols" value="16"></input>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<label for="mobile-grid-rows">Rows:</label>
+					<input type="number" min="1" id="mobile-grid-rows" value="16"></input>
+				</li>
+			<ul>
+		</div>
+		<div id="mobile-menu" class="mobile-menu-btn dropup">
+			<button class="mobile-tool-btn btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+			<ul class="dropdown-menu">
+				<li>
+					<a id="mobile-new-btn">New</a>
+				</li>
+				<li>
+					<a id="mobile-open-btn">Open...</a>
+				</li>
+				<li>
+					<a id="mobile-save-btn">Save</a>
+				</li>
+				<li>
+					<a id="mobile-animate-btn">Animate</a>
+				</li>
+				<li>
+					<a id="mobile-help-btn">Help</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="mobile-new-splashScreen" class="mobile-splashScreen-background">
+		<div class="mobile-splashScreen-box">
+			<div class="splashScreen-header">start new project</div>
+			<div id="mobile-splashScreen-scale-options">
+				<p>Choose scale:</p>
+				<input id="16x16" type="radio" name="scale" checked>16x16</input></br>
+				<input id="32x32" type="radio" name="scale">32x32</input></br>
+				<input id="64x64" type="radio" name="scale">64x64</input>
+			</div>
+			<div style="margin: 0 auto; width: 120px">
+				<button id="mobile-new-splashScreen-cancel">
+					cancel
+				</button>
+				<button id="mobile-new-splashScreen-ok">
+					accept
+				</button>
+			</div>
+		</div>
+	</div>
+	<div id="mobile-open-splashScreen" class="mobile-splashScreen-background">
+		<div class="mobile-splashScreen-box">
+			<div class="splashScreen-header">open image from device</div>
+			<div style="margin-left: 15px">Choose frame width and height:</div>
+			<label style="margin-left: 15px" for="mobile-open-frame-width">width:</label><input type="number" min="1" value="16" name="mobile-open-frame-width" id="mobile-open-frame-width"/></br>
+			<label style="margin-left: 15px" for="mobile-open-frame-height">height:</label><input type="number" min="1" value="16" name="mobile-open-frame-height" id="mobile-open-frame-height"/>
+			<div id="mobile-choose-file-img">
+				<input id="mobile-imageLoader" name="mobile-imageLoader" type="file" accept="image/*" />
+			</div>
+			<div style="margin: 0 auto; width: 100px">
+				<button id="mobile-open-splashScreen-cancel">
+					cancel
+				</button>
+			</div>
+		</div>
+	</div>
+	<div id="mobile-animation-splashScreen" class="mobile-splashScreen-background">
+		<div class="mobile-splashScreen-box">
+			<div class="splashScreen-header">Animation preview</div>
+			<label for="mobile-number-of-animation-frames">Animation Frames:</label><input type="number" min="1" name="mobile-number-of-animation-frames" id="mobile-number-of-animation-frames" style="width: 100px" value="1"/></br>
+			<label for="mobile-animation-row">Animation Row:</label><input type="number" min="1" name="mobile-animation-row" id="mobile-animation-row" style="width: 100px" value="1"/></br>
+			<label for="mobile-animation-speed">Animation speed:</label><input type="number" min="1" max="60" name="mobile-animation-speed" id="mobile-animation-speed" style="width: 100px" value="1"/>
+			<canvas id="mobile-animation-preview-canvas" width="160" height="160"></canvas>
+			<button id="mobile-animation-preview-cancel" style="display: block; margin: 0 auto; margin-top: 10px">close</button>
+		</div>
+	</div>
+	<div id="mobile-help-splashScreen" class="mobile-splashScreen-background">
+		<div id="mobile-help-splashScreen-box">
+			<h1>Welcome to Sprite sheet maker help section</h1>
+		
+			<h3>Index:</h3>
+			<i>- Version history</i></br>
+			<i>- Toolbar.</i></br>
+			<i>- Current frame bar.</i></br>
+			<i>- Menu options.</i></br>
+		
+			<h3>Version history:</h3>
+			<p>1.1:</p>
+			<i>-fix bug when the user opens a project and then tries to open the same project again but It
+			doesn't because of an error with the file reader.</i></br>
+			<i>-fix bug when the user is drawing and releases the mouse out of the canvas, and then when the
+			mouse entered the canvas it keeped drawing even if the mouse wasn't pressed.</i></br>
+			<i>-add the new transparent color to make transparent backgrounds.</i></br>
+			<i>-add option to increase and decrease tool size.</i></br>
+			<i>-add the undo and redo buttons.</i></br>
+			<i>-add new tool buttons: circle, line, square, triangle(this tools doesn't work yet, in the next update will become functional).</i></br>
+			<i>-add version history to the help section.<i></br>
+			<i>-changed the way the eraser works, now doesn't leave that annoying white border trace like before and will erase 
+			color white too.</i></br>
+			<i>-changed the dimensions of the toolbar because of the new added buttons.</i></br>
+			<i>-changed the theme of the app to a more colorful one<i></br>
+			<i>-updated the help section to the new features.</i></br>
+			<i>-added support for mobile devices(currently testing).</i></br>
+		
+			<h3>Toolbar:</h3>
+			<p>In the toolbar you can use various tools for drawing in the canvas(and at the top you can choose
+			the size of the tool as well as undo and redo various actions), like a pencil(to draw pixels based on 
+			the scale of the grid), a brush(to just draw freely), an eraser, a color fill tool, an eyedropper(to copy
+			a color previusly used on the canvas), a drag tool(to reposition the canvas in the work space),
+			a copy tool(that copies an entire frame and on the next click it pastes it in the frame of your choice),
+			and a stamp tool(it works the same as the copy tool but it is pasted with transparency in the grid not the canvas; it
+			works great as a guide to your next frame draw), also when you copy something with the copy tool
+			or the stamp tool, you can cancel the action by using the right click. Then you have the usual 
+			default colors palette, a custom color picker and the new transparent color that lets you make transparent
+			backgrounds.</p>
+		
+			<p>In the next section is the grid controllers, here you can toggle the grid on and off and also
+			specify how many columns and rows your frame will have(is important that you know, once you add a new frame
+			the grid controllers section will be inhabilitated).</p>
+		
+			<p>Lastly the animation controllers section, here you can add and remove the animation frames and
+			animation rows.</p>
+
+		
+			<h3>Current frame bar:</h3>
+			<p>This bar is useful when you want to go to a specific frame in your an animation that has a lot
+			of frames, so you can click for example the number 42 of the frame bar and it will take you to that
+			frame in the canvas.</p>
+		
+			<h3>Menu options:</h3>
+			<p>When clicking on New you will be asked to choose a scale for your new project, this means that you
+			will specify the scale of the grid as well as the pencil tool size.</p>
+		
+			<p>When you save your project it is best to name it like: example8x7-16, that means that the project consist
+			of 8 grid columns and 7 grid rows, with a scale of 16(the columns and rows are just a way for you to remember
+			the width and height of the animation frame, but the scale number is nessesary or the grid wont work very well).</p>
+		
+			<p>Remember the name we gave our saved project?, well now we will put it to use. When you click on Open you will be asked for
+			a width and a height, if we want to open the project example8x7-16 then we fill the field width = 8 and height = 7, and then
+			we select the file example8x7-16.</p>
+		
+			<p>And the last one is Animation preview, when you click on this you will see an Animation frames field(where you 
+			will enter the number of frames you want in the animation), an Animation row field(where you can choose wich row of
+			frames will be played), and an Animation speed field(the greater the number the faster).</p>
+		
+			<button id="mobile-help-splashScreen-cancel" style="display: block; margin: 0 auto">close</button>
+		</div>
+	</div>
+<!--Main script--> 
+	<script src="Sprite sheet studio.js"></script>
+	
+</body>
+</html>

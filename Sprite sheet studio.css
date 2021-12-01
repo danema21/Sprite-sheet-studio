@@ -1,0 +1,400 @@
+body{
+	background-image: linear-gradient(to right, violet 0%, skyblue 100%);
+	overflow-x: hidden;
+	user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+/*Menu header block/////////////////////////////////////////////*/
+#menu{
+	background-image: linear-gradient(-20deg, #d558c8 0%, #24d292 100%);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	color: white;
+	z-index: -1;
+}
+
+.menu-btn{
+	background-color: rgba(0, 0, 0, 0);
+	margin: 5px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+.menu-btn:hover{
+	color: gray;
+}
+
+#version{
+	margin: 0 auto;
+	margin-right: 20px;
+}
+/*//////////////////////////////////////////////////////////////*/
+
+/*Framesbar block///////////////////////////////////////////////*/
+#frames-bar{
+	/*background-image: linear-gradient(-20deg, #dcb0ed 0%, #99c99c 100%);*/
+	background-image: linear-gradient(-20deg, #d558c8 0%, #24d292 100%);
+	display: flex;
+	border: 1px solid gray;
+}
+
+#frames-container{
+	background-color: white;
+	display: flex;
+	width: 90%;
+	margin-left: 10px;
+	overflow-x: auto; 
+}
+/*//////////////////////////////////////////////////////////////*/
+
+/*Toolbar block/////////////////////////////////////////////////*/
+#tool-size-bar{
+	position: absolute;
+	background-image: linear-gradient(-20deg, #d558c8 0%, #24d292 100%); 
+	display: inline-block;
+	padding: 5px; 
+	right: 5px;
+}
+
+#tool-bar{
+	background-color: rgba(120, 120, 160, 0.7);
+	border: 2px solid black;
+	display: flex;
+	flex-wrap: wrap;
+	width: 260px;
+	top: 80px;
+	left: 25px;
+	position: absolute;
+	z-index: -2;
+	box-shadow: 0px 0px 10px black;
+}
+
+.tool-bar-header{
+	background-image: linear-gradient(-20deg, #dcb0ed 0%, #99c99c 100%);
+	text-align: center;
+	font-weight: bold;
+	width: 100%;
+}
+
+.tool-btn{
+	height: 40px;
+	width: 40px;
+	margin: 5px;
+	color: black;
+}
+
+.color-btn{
+	height: 30px;
+	width: 30px;
+	margin: 3px;
+}
+
+#grid-handlers-container{
+	display: flex;
+	margin: 15px 15px 15px 20px;
+	width: 100%;
+	height: 40px;
+	justify-content: space-around;
+}
+
+#columns-grid-handler{
+	font-size: 10px;
+	font-weight: bold;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 99px;
+}
+
+#rows-grid-handler{
+	font-size: 10px;
+	font-weight: bold;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 74px;
+}
+
+.grid-handler-btn{
+	background-color: lightgray;
+	color: green;
+}
+
+#display-row-quantity{
+	background-color: lightgray;
+	width: 89%;
+	text-align: center;
+}
+
+#display-column-quantity{
+	background-color: lightgray;
+	width: 83%;
+	text-align: center;
+}
+
+#grid-handlers-disabling-screen{
+	position: absolute;
+	width: 256px;
+	height: 70px;
+	top: 396px;
+	left: 0px;
+	background-color: rgba(0, 0, 0, 0.5);
+	visibility: hidden;
+}
+
+#animation-controls-container{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////*/
+
+/*Canvas block//////////////////////////////////////////////////*/
+#canvas{
+	position: absolute;
+	top: 200px; 
+	left: 450px;
+	z-index: -4;
+	box-shadow: 0px 0px 10px black;
+	background-color: white;
+	background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
+	background-size: 20px 20px;
+	background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+#grid{
+	position: absolute;
+	top: 200px; 
+	left: 450px;
+	z-index: -3;
+}
+
+.auxiliar-icon{
+	position: fixed;
+	font-size: 50px;
+	border: 2px dotted gray;
+	padding: 5px;
+	background-color: rgba(255, 255, 255, 0.8);
+	visibility: hidden;
+}
+/*//////////////////////////////////////////////////////////////*/
+
+/*Splashscreen block////////////////////////////////////////////*/
+#new-splashScreen{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+.splashScreen-box{
+	background-color: lightgray;
+	width: 400px; 
+	height: 200px;
+	margin: 0 auto;
+	margin-top: 150px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 40px black;
+}
+
+.splashScreen-header{
+	background-color: black;
+	color: white;
+	text-align: center;
+	border-radius: 5px 5px 0 0;
+	margin-bottom: 5px;
+}
+
+#splashScreen-scale-options{
+	background-color: #BBBBBB;
+	width: 100px;
+	margin: 10px;
+	margin-top: 20px;
+	margin-left: 40px;
+	border-radius: 3px;
+}
+
+#open-splashScreen{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+#choose-file-img{
+	background-color: #BBBBBB;
+	padding: 15px;
+	display: inline-block;
+	margin: 10px 20px 0px 20px;
+}
+
+#animation-splashScreen{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+#splashScreen-animation-box{
+	background-color: lightgray;
+	width: 440px;
+	margin: 0 auto;
+	margin-top: 150px;
+	padding-bottom: 3px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 40px black;
+}
+
+#help-splashScreen{
+	background-color: rgba(0, 0, 0, 0.95);
+	position: absolute;
+	width: 90%;
+	height: 80%;
+	color: white;
+	visibility: hidden;
+	overflow-y: auto;
+	margin-left: 5%;
+	margin-top: 2%;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+/*mobile section////////////////////////////////////////////////*/
+#mobile-animation-controllers, #mobile-animation-rows,
+#mobile-frames-bar, .frame-marker,#mobile-undo-redo,
+#mobile-canvas, #mobile-grid, #mobile-menu-container, 
+.mobile-menu-btn, .mobile-tool-btn, 
+.mobile-splashScreen-background{
+	display: none;
+}
+
+@media screen and (max-width: 580px){
+	body{
+		overflow-y: hidden;
+	}
+	#menu, #frames-bar, #tool-size-bar,
+	#tool-bar, #canvas, #grid, #new-splashScreen,
+	#open-splashScreen, #animation-splashScreen, 
+	#help-splashScreen{
+		display: none;
+	}
+	#mobile-animation-controllers{
+		display: flex;
+		font-size: 25px;
+	}
+	#mobile-animation-rows{
+		display: flex;
+		font-size: 10px;
+		flex-wrap: wrap;
+	}
+	#mobile-frames-bar{
+		background-color: white;
+		border: 3px solid lightgray;
+		display: flex;
+		overflow-x: auto;
+	}
+	.frame-marker{
+		display: inline;
+		background-color: lightgray;
+		text-align: center;
+		font-size: 10px;
+	}
+	#mobile-undo-redo{
+		display: flex;
+		justify-content: space-between;
+		color: gray;
+	}
+	#mobile-canvas{
+		box-shadow: 0px 0px 10px black;
+		background-color: white;
+		background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
+		background-size: 20px 20px;
+		background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+		display: block;
+		position: absolute;
+		z-index: -2;
+	}
+	#mobile-grid{
+		display: block;
+		position: absolute;
+		z-index: -1;
+		visibility: visible;
+	}
+	#mobile-menu-container{
+		background-color: gray;
+		position: fixed;
+		bottom: 0px;
+		width: 100%;
+		display: flex;
+	}
+	.mobile-menu-btn{
+		background-color: lightgray;
+		width: 20%;
+		display: inline;
+	}
+	.mobile-tool-btn{
+		width: 100%;
+		height: 40px;
+		background-color: lightgray;
+		display: inline;
+	}
+	.mobile-splashScreen-background{
+		display: block;
+		background-color: rgba(255,255,255,0.8);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		visibility: hidden;
+	}
+	.mobile-splashScreen-box{
+		background-color: white;
+		padding: 2px;
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 30px;
+		border-radius: 5px;
+		box-shadow: 0px 0px 10px black;
+	}
+	#mobile-splashScreen-scale-options{
+		background-color: #DDDDDD;
+		width: 100px;
+		margin: 10px;
+		margin-top: 20px;
+		margin-left: 40px;
+		border-radius: 3px;
+	}
+	#mobile-choose-file-img{
+		background-color: #DDDDDD;
+		padding: 15px;
+		display: flex;
+		margin: 10px 20px 5px 20px;
+	}
+	#mobile-animation-preview-canvas{
+		display: block;
+		margin: 0 auto;
+		margin-top: 10px;
+		border: 1px solid black;
+	}
+	#mobile-help-splashScreen-box{
+		background-color: rgba(255, 255, 255, 0.95);
+		position: absolute;
+		width: 90%;
+		height: 60%;
+		color: black;
+		overflow-y: auto;
+		margin-left: 5%;
+		margin-top: 10%;
+		border-radius: 5px;
+		padding: 5px;
+	}
+}
+/*//////////////////////////////////////////////////////////////*/
