@@ -10,3 +10,7 @@ Tristemente abandone el proyecto porque se me hizo muy dificil mantener el proye
 
 # De todos modos les invito a probar Sprite-sheet-studio
 Es 100% funcional aunque podria ser algo dificil de aprender a usar (tiene una seccion help en la barra de herramientas). Y si tienen curiosidad de como fue mi primer intento prueben Sprite-sheet-maker. Solo descargense el zip de este repositorio y abran el Sprite_sheet_studio.html o Sprite_sheet_maker.html
+
+# Buenas noticias:
+Empeze a aprender ReactJS más a fondo y tuve la idea de que la mejor forma de aprenderlo sería creando esta misma aplicación pero en ReactJS, esto me biene bien porque es un proyecto medio grande y la lógica ya esta hecha, lo que me faltaría hacer es implementarlo de una manera que sea prolija y mantenible.
+De ahora en adelante esta versión de Sprite-sheet-studio queda en el pasado, podran ver el progreso de la nueva versión aquí: https://github.com/danema21/SpriteSheetStudioReactJS
